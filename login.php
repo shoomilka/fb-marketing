@@ -7,23 +7,37 @@ $dotenv->load();
 include("header.php");
 ?>
     <script>
-        $(document).ready(function() {
-            $.ajaxSetup({ cache: true });
-            $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
-                FB.init({
-                    appId: '<?php echo $_ENV["FB_APP_ID"]; ?>',
-                    version: 'v7.0'
-                });     
-                $('#loginbutton, #feedbutton').removeAttr('disabled');
-                FB.getLoginStatus(updateStatusCallback);
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '<?php echo $_ENV["FB_APP_ID"]; ?>',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v7.0'
             });
+            FB.AppEvents.logPageView();   
+        };
 
-            function updateStatusCallback(){
-                alert('Status updated!!');
-            }
-        });
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    console.log(response.authResponse.accessToken);
+                }
+            });
+        }
     </script>
 
-    <button id="loginbutton">Login via FB</button>
+    <fb:login-button 
+        scope="public_profile, email"
+        onlogin="checkLoginState();">
+    </fb:login-button>
+
 <?php
 include("footer.php");
