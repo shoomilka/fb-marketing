@@ -3,7 +3,8 @@
     "type": "project",
     "require": {
         "vlucas/phpdotenv": "^5.0",
-        "facebook/php-business-sdk": "5.0.5"
+        "facebook/php-business-sdk": "5.0.5",
+        "facebook/graph-sdk": "^5.7"
     },
     "authors": [
         {
