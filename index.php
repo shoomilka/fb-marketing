@@ -11,6 +11,11 @@ use FacebookAds\Object\Fields\CampaignFields;
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
+if (!isset($_GET["accessToken"])) {
+    header('Location: /login.php');
+    exit();
+}
+
 $app_id = $_ENV["FB_APP_ID"];
 $app_secret = $_ENV["FB_APP_SECRET"];
 $access_token = $_GET["accessToken"];
