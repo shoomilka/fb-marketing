@@ -2,6 +2,7 @@
     "name": "fb-marketing",
     "type": "project",
     "require": {
+        "php": "7.2.3",
         "vlucas/phpdotenv": "^5.0",
         "facebook/php-business-sdk": "7.0",
         "facebook/graph-sdk": "^5.7"
