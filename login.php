@@ -28,14 +28,17 @@ include("header.php");
         function checkLoginState() {
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
-                    console.log(response.authResponse.accessToken);
+                    //console.log(response.authResponse.accessToken);
+
+                    window.location.href = '/index.php?accessToken='
+                        +response.authResponse.accessToken;
                 }
             });
         }
     </script>
 
     <fb:login-button 
-        scope="public_profile, email"
+        scope="public_profile, email, ads_management"
         onlogin="checkLoginState();">
     </fb:login-button>
 
