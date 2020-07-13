@@ -1,0 +1,14 @@
+{
+    "name": "fb-marketing",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "^5.0",
+        "facebook/php-business-sdk": "5.0.5"
+    },
+    "authors": [
+        {
+            "name": "Ulina Shumilina",
+            "email": "shoomilka@i.ua"
+        }
+    ]
+}
